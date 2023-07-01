@@ -1,0 +1,20 @@
+- name: Install Cargo
+  shell: |
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source ~/.zshrc
+  args:
+    executable: /bin/zsh
+  become: true
+  become_user: alecwang
+  become_method: sudo
+  environment:
+    HOME: /home/alecwang
+
+- name: Install Just
+  shell: |
+    cargo install just
+  become: true
+  become_user: alecwang
+  become_method: sudo
+  environment:
+    HOME: /home/alecwang

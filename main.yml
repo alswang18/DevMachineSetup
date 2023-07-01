@@ -1,0 +1,26 @@
+- hosts: localhost
+  become: true
+  vars:
+    ansible_user: alecwang
+  pre_tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+  tasks:
+    - name: Install zsh
+      apt:
+        name: zsh
+        state: present
+
+    - name: Set Zsh as default shell
+      ansible.builtin.command:
+        cmd: chsh -s /usr/bin/zsh "{{ ansible_user }}"
+      become: true
+      become_user: root
+
+    # installs oh-my-zsh
+    - import_tasks: ./tasks/install_oh_my_zsh.yml
+    # installs node js stuff
+    - import_tasks: ./tasks/install_fnm.yml
+    # installs rust stuff
+    - import_tasks: ./tasks/install_cargo_and_crates.yml

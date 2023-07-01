@@ -1,0 +1,12 @@
+- name: Install fast node manager (fnm) and node long term support (lts)
+  shell: |
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+    source ~/.zshrc
+    export PATH="/home/alecwang/.local/share/fnm:$PATH"
+    eval "$(fnm env)"
+    fnm install --lts
+  become: true
+  become_user: alecwang
+  become_method: sudo
+  environment:
+    HOME: /home/alecwang

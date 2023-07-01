@@ -1,0 +1,23 @@
+- name: Clone oh-my-zsh repository
+  git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: /home/{{ ansible_user }}/.oh-my-zsh
+    depth: 1
+    force: yes
+
+- name: Install zsh-autosuggestions plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /home/{{ ansible_user }}/.oh-my-zsh/plugins/zsh-autosuggestions
+    depth: 1
+
+- name: Create .zshrc file
+  copy:
+    content: |
+      export ZSH="/home/{{ ansible_user }}/.oh-my-zsh"
+      ZSH_THEME="bureau"
+      plugins=(git zsh-autosuggestions)
+      source $ZSH/oh-my-zsh.sh
+    dest: /home/{{ ansible_user }}/.zshrc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
