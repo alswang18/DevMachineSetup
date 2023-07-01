@@ -1,10 +1,35 @@
-- name: Install fast node manager (fnm) and node long term support (lts)
+# vars at the bottom of file
+
+- name: Wait for .zshrc file to be generated (fast node manager)
+  wait_for:
+    path: /home/alecwang/.zshrc
+    state: present
+
+- name: Install fast node manager (fnm)
   shell: |
     curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
-    source ~/.zshrc
     export PATH="/home/alecwang/.local/share/fnm:$PATH"
-    eval "$(fnm env)"
-    fnm install --lts
+    eval "`fnm env`"
+    fnm install "{{ node_version }}"
+    fnm default "{{ node_version }}"
+    fnm use "{{ node_version }}"
+    npm install -g pnpm
+    npm install -g typescript
+    npm install -g ts-node
+    npm install -g prettier
+  become: true
+  become_user: alecwang
+  become_method: sudo
+  environment:
+    HOME: /home/alecwang
+
+- name: Write fnm configuration into zshrc
+  lineinfile:
+    path: /home/alecwang/.zshrc
+    line: |
+      # fnm configuration
+      export PATH="/home/alecwang/.local/share/fnm:$PATH"
+      eval "`fnm env`"
   become: true
   become_user: alecwang
   become_method: sudo

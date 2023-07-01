@@ -2,6 +2,8 @@
   become: true
   vars:
     ansible_user: alecwang
+    node_version: v18.16.1
+    python_version: 3.10.12
   pre_tasks:
     - name: Update apt cache
       apt:
@@ -24,3 +26,5 @@
     - import_tasks: ./tasks/install_fnm.yml
     # installs rust stuff
     - import_tasks: ./tasks/install_cargo_and_crates.yml
+    # installs python stuff
+    - import_tasks: ./tasks/install_pyenv.yml

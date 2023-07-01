@@ -1,7 +1,8 @@
-- name: Install Cargo
+- name: Install Cargo and Cargo Crates
   shell: |
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source ~/.zshrc
+    source "$HOME/.cargo/env"
+    cargo install just
   args:
     executable: /bin/zsh
   become: true
@@ -10,11 +11,3 @@
   environment:
     HOME: /home/alecwang
 
-- name: Install Just
-  shell: |
-    cargo install just
-  become: true
-  become_user: alecwang
-  become_method: sudo
-  environment:
-    HOME: /home/alecwang
