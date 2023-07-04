@@ -4,6 +4,7 @@
     ansible_user: alecwang
     node_version: v18.16.1
     python_version: 3.10.12
+    source_dir: "home/alecwang/DevMachineSetup"
   pre_tasks:
     - name: Update apt cache
       apt:
@@ -19,12 +20,15 @@
         cmd: chsh -s /usr/bin/zsh "{{ ansible_user }}"
       become: true
       become_user: root
-
+    # sets up ssh
+    - import_tasks: ./tasks/ssh.yml
+    # sets up dotfiles
+    
     # installs oh-my-zsh
     - import_tasks: ./tasks/install_oh_my_zsh.yml
-    # installs node js stuff
+    # # installs node js stuff
     - import_tasks: ./tasks/install_fnm.yml
-    # installs rust stuff
+    # # installs rust stuff
     - import_tasks: ./tasks/install_cargo_and_crates.yml
-    # installs python stuff
+    # # installs python stuff
     - import_tasks: ./tasks/install_pyenv.yml

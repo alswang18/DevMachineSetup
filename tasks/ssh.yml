@@ -1,0 +1,55 @@
+- name: Ensure .ssh directory exists
+  become: yes
+  file:
+    path: "/home/alecwang/.ssh"
+    state: directory
+    mode: '0700'
+  become_user: alecwang
+  become_method: sudo
+- name: Set permissions of id_rsa
+  become: yes
+  become_user: alecwang
+  become_method: sudo
+  file:
+    path: "{{ source_dir }}/ssh_files/id_rsa"
+    mode: '0644'
+
+- name: Set permissions of id_rsa.pub
+  become: yes
+  become_user: alecwang
+  become_method: sudo
+  file:
+    path: "{{ source_dir }}/ssh_files/id_rsa.pub"
+    mode: '0644'
+
+- name: Ensure .ssh directory exists
+  become: yes
+  file:
+    path: "/home/alecwang/.ssh"
+    state: directory
+    mode: '0700'
+  become_user: alecwang
+  become_method: sudo
+
+- name: Copy id_rsa
+  become: yes
+  become_user: alecwang
+  become_method: sudo
+  copy:
+    src: "{{ source_dir }}/ssh_files/id_rsa"
+    dest: "/home/alecwang/.ssh"
+    owner: alecwang
+    group: alecwang
+    mode: '0600'
+
+- name: Copy id_rsa.pub
+  become: yes
+  become_user: alecwang
+  become_method: sudo
+  copy:
+    src: "{{ source_dir }}/ssh_files/id_rsa.pub"
+    dest: "/home/alecwang/.ssh"
+    owner: alecwang
+    group: alecwang
+    mode: '0644'
+
