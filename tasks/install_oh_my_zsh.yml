@@ -11,17 +11,12 @@
     dest: /home/{{ ansible_user }}/.oh-my-zsh/plugins/zsh-autosuggestions
     depth: 1
 
-- name: Install fzf plugin
-  git:
-    repo: https://github.com/unixorn/fzf-zsh-plugin.git
-    dest: /home/{{ ansible_user }}/.oh-my-zsh/plugins/fzf-zsh-plugin
-
 - name: Create .zshrc file
   copy:
     content: |
       export ZSH="/home/{{ ansible_user }}/.oh-my-zsh"
       ZSH_THEME="bureau"
-      plugins=(z git zsh-autosuggestions fzf-zsh-plugin)
+      plugins=(z git zsh-autosuggestions)
       source $ZSH/oh-my-zsh.sh
     dest: /home/{{ ansible_user }}/.zshrc
     owner: "{{ ansible_user }}"
