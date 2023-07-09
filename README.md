@@ -1,10 +1,6 @@
-Certainly! Here's the formatted `README.md` code:
-
-```markdown
 # DevMachineSetup
 
 Scripts to setup a new machine (Ansible, etc)
-
 ## Generate SSH key pair
 
 To generate an SSH key pair, run the following command:
@@ -29,4 +25,9 @@ ansible-vault encrypt ./ssh_files/id_rsa --ask-vault-pass
 ```
 
 Remember to provide the Ansible Vault password when prompted.
+
+## Test new changes on docker version of new computer
+
+```shell
+./build-dockers.sh && docker run --rm -it new-computer
 ```

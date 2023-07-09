@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN sed -i 's/http:\/\/security.ubuntu.com/http:\/\/archive.ubuntu.com/' /etc/apt/sources.list \
     && apt-get update && apt-get upgrade -y \
-    && apt-get install -y software-properties-common curl git build-essential sudo unzip nano \
+    && apt-get install -y software-properties-common curl git build-essential sudo unzip nano fzf \
     && apt-add-repository -y ppa:ansible/ansible \
     && apt-get update && apt-get install -y curl git ansible build-essential \
     && apt-get clean autoclean \
