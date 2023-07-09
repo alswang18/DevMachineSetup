@@ -1,0 +1,11 @@
+- name: setup git username and email
+  shell: |
+    git config --global user.name "{{ git_username }}"
+    git config --global user.email "{{ git_email }}"
+  args:
+    executable: /bin/zsh
+  become: true
+  become_user: alecwang
+  become_method: sudo
+  environment:
+    HOME: /home/alecwang

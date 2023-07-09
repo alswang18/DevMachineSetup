@@ -4,7 +4,9 @@
     ansible_user: alecwang
     node_version: v18.16.1
     python_version: 3.10.12
-    source_dir: "home/alecwang/DevMachineSetup"
+    source_dir: "/home/alecwang/DevMachineSetup"
+    git_username: alswang18
+    git_email: alec.sy.wang@gmail.com
   pre_tasks:
     - name: Update apt cache
       apt:
@@ -20,10 +22,10 @@
         cmd: chsh -s /usr/bin/zsh "{{ ansible_user }}"
       become: true
       become_user: root
+    # sets up github
+    - import_tasks: ./tasks/git.yml
     # sets up ssh
     - import_tasks: ./tasks/ssh.yml
-    # sets up dotfiles
-    
     # installs oh-my-zsh
     - import_tasks: ./tasks/install_oh_my_zsh.yml
     # # installs node js stuff

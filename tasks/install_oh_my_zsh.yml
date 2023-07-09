@@ -16,7 +16,7 @@
     content: |
       export ZSH="/home/{{ ansible_user }}/.oh-my-zsh"
       ZSH_THEME="bureau"
-      plugins=(git zsh-autosuggestions)
+      plugins=(z git zsh-autosuggestions)
       source $ZSH/oh-my-zsh.sh
     dest: /home/{{ ansible_user }}/.zshrc
     owner: "{{ ansible_user }}"
