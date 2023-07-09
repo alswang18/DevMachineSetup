@@ -51,9 +51,3 @@
   become_method: sudo
   environment:
     HOME: /home/alecwang
-
-- name: Update pip and install conan and pip-tools
-  shell: |
-    pip install --upgrade pip
-    pip install conan
-    pip install pip-tools
