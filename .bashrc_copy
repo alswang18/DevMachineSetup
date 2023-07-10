@@ -1,0 +1,8 @@
+update_prompt(){
+  export PS1="\u@\h \[\033[32m\]\w -\\[\e[94m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')\[\>}
+
+if [[ -z "$PROMPT_COMMAND" ]]; then
+  PROMPT_COMMAND+='update_prompt'
+else
+  PROMPT_COMMAND+="; update_prompt"
+fi
