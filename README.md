@@ -1,6 +1,17 @@
 # DevMachineSetup
 
 Scripts to setup a new machine (Ansible, etc)
+## Run before executing anything for Ubuntu
+```shell
+sudo apt-get update && sudo apt-get upgrade -y \
+    && sudo apt-get install -y software-properties-common curl git build-essential sudo unzip nano fzf \
+    && sudo apt-add-repository -y ppa:ansible/ansible \
+    && sudo apt-get update && sudo apt-get install -y curl git ansible build-essential \
+    && sudo apt-get clean autoclean \
+    && sudo apt-get autoremove --yes \
+    && sudo sed -i 's/# set bell-style none/set bell-style none/' /etc/inputrc
+
+```
 ## Generate SSH key pair
 
 To generate an SSH key pair, run the following command:
