@@ -37,6 +37,11 @@ ansible-vault encrypt ./ssh_files/id_rsa --ask-vault-pass
 
 Remember to provide the Ansible Vault password when prompted.
 
+## Install all software to setup machine
+```shell
+ansible-playbook main.yml
+```
+
 ## Test new changes on docker version of new computer
 
 ```shell
