@@ -1,0 +1,11 @@
+- name: Install ZVM for Zig
+  shell: |
+    curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
+  args:
+    executable: /bin/zsh
+  become: true
+  become_user: alecwang
+  become_method: sudo
+  environment:
+    HOME: /home/alecwang
+
