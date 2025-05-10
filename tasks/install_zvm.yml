@@ -1,3 +1,8 @@
+- name: Wait for .zshrc file to be generated (zig version manager)
+  wait_for:
+    path: /home/alecwang/.zshrc
+    state: present
+
 - name: Install ZVM for Zig
   shell: |
     curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash

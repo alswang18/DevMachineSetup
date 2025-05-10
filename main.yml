@@ -23,14 +23,16 @@
       become: true
       become_user: root
     # sets up github
-    - import_tasks: ./tasks/git.yml
+    # - import_tasks: ./tasks/git.yml
     # sets up ssh
-    - import_tasks: ./tasks/ssh.yml
+    # - import_tasks: ./tasks/ssh.yml
     # installs oh-my-zsh
-    - import_tasks: ./tasks/install_oh_my_zsh.yml
+    - import_tasks: ./tasks/install_docker.yml
+    # Make sure to change the repo your pointing at. We hard code noble Ubuntu.
+    # - import_tasks: ./tasks/install_oh_my_zsh.yml
     # # installs node js stuff
-    - import_tasks: ./tasks/install_fnm.yml
-    # # installs rust stuff
-    - import_tasks: ./tasks/install_cargo_and_crates.yml
-    # # installs python stuff
-    - import_tasks: ./tasks/install_pyenv.yml
+    # - import_tasks: ./tasks/install_fnm.yml
+    # # # installs rust stuff
+    # - import_tasks: ./tasks/install_cargo_and_crates.yml
+    # # # installs python stuff
+    # - import_tasks: ./tasks/install_pyenv.yml
